@@ -6,11 +6,22 @@ export const SuperHeroesPage = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/superheroes").then((res) => {
-      setData(res.data);
-      setIsLoading(false);
-    });
+    axios
+      .get("http://localhost:4000/superheroes", {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        },
+      })
+      .then((res) => {
+        console.log("res", { res });
+        setData(res.data);
+        setIsLoading(false);
+      });
   }, []);
+
+  console.log({ data });
 
   if (isLoading) {
     return <h2>Loading...</h2>;
