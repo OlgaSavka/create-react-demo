@@ -8,7 +8,7 @@ export const SuperHeroesPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/superheroes1", {
+      .get("http://localhost:4000/superheroes", {
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
